@@ -63,3 +63,76 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
 .footer-brand{background:#f4f1ea;padding:2px 12px}
 .footer-brand .brand-logo{width:180px;height:68px}
 @media(max-width:700px){.header{height:78px}.brand-logo{width:142px;height:62px}.header .phone{padding:9px 10px;font-size:10px}.footer-brand .brand-logo{width:160px}}
+
+/* Refined mobile layout */
+@media(max-width:700px){
+  html{scroll-padding-top:70px}
+  body{overflow-x:hidden}
+  h2{font-size:clamp(2.25rem,11vw,3.2rem);line-height:1.02}
+  .section{padding:64px 18px}
+  .header{height:70px;padding:0 14px;gap:10px}
+  .brand-logo{width:118px;height:54px}
+  .header .phone{min-height:40px;padding:0 10px;white-space:nowrap;font-size:9px;letter-spacing:.02em}
+  .hero{height:auto;min-height:calc(100svh - 70px);padding:72px 18px 42px;align-items:flex-end}
+  .hero::before{inset:-2%;background-position:58% center;animation:none}
+  .hero-shade{background:linear-gradient(180deg,rgba(8,9,7,.2),rgba(8,9,7,.9) 72%,rgba(8,9,7,.97))}
+  .eyebrow{font-size:10px;line-height:1.5;letter-spacing:.15em;margin-bottom:16px}
+  .hero h1{font-size:clamp(2.65rem,13vw,3.65rem);line-height:.94;margin-bottom:20px}
+  .hero p{font-size:14px;line-height:1.6}
+  .hero-actions{gap:10px;margin-top:26px}
+  .button{width:100%;min-height:52px;padding:0 18px}
+  .about{gap:22px}
+  .about-copy{padding-top:0;font-size:15px;line-height:1.7}
+  .advantages{padding:0 18px 64px;gap:10px}
+  .advantages article{min-height:auto;padding:26px}
+  .advantages h3{margin:22px 0 10px}
+  .section-head{margin-bottom:34px}
+  .section-head>p{margin-top:18px}
+  .filters{width:calc(100vw - 18px);margin-top:22px;padding-right:18px;display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .filters button{min-height:42px;flex:0 0 auto}
+  .project-grid{gap:16px}
+  .project-card{overflow:hidden}
+  .project-image{height:64vw;min-height:230px;max-height:330px}
+  .project-info{padding:22px 18px}
+  .project-info h3{font-size:28px;margin-bottom:12px}
+  .project-info>p{min-height:auto}
+  .project-meta{gap:20px;margin:18px 0;padding:15px 0}
+  .project-bottom{align-items:flex-start;gap:16px;flex-direction:column}
+  .project-bottom button{width:100%;min-height:44px;text-align:left}
+  .turnkey-visual{min-height:560px;padding:54px 18px 94px}
+  .cycle-title strong{font-size:clamp(3rem,15vw,4rem)}
+  .blueprint-caption{left:18px;right:18px}
+  .turnkey-content{padding:64px 18px}
+  .turnkey-content li{font-size:14px;line-height:1.45}
+  .step-grid article{padding:24px 4px}
+  .step-grid b{font-size:34px}
+  .step-grid h3{margin-top:22px}
+  .gallery{padding-top:64px}
+  .gallery-grid{gap:8px;grid-template-rows:repeat(4,58vw)}
+  .contact{gap:36px}
+  .contact-copy p{font-size:14px}
+  .contact-details{margin-top:28px;overflow-wrap:anywhere}
+  .contact-details a:first-child{font-size:25px}
+  .contact-form{margin:0 -2px;padding:28px 20px}
+  .contact-form input,.contact-form select{font-size:16px}
+  footer{padding:30px 18px 92px;gap:20px}
+  footer>div:last-child{width:100%;justify-content:space-between}
+  .project-modal{display:block;overflow-y:auto}
+  .modal-gallery{height:auto;grid-template-rows:55svh 130px}
+  .modal-copy{padding:42px 18px 70px}
+  .modal-copy h2{font-size:clamp(3rem,17vw,4.5rem)}
+  .modal-numbers{gap:0}
+  .modal-close{top:12px;right:12px;width:46px;height:46px}
+  .floating-contact{right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom))}
+}
+
+@media(max-width:380px){
+  .header{padding:0 10px}
+  .brand-logo{width:104px}
+  .header .phone{padding:0 8px;font-size:8px}
+  .hero h1{font-size:2.55rem}
+  .floating-contact{width:52px;padding:6px}
+  .floating-contact span{display:none}
+  .floating-contact b{width:40px;height:40px}
+}
