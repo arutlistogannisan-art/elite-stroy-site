@@ -181,3 +181,19 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
   .hero-orbit,.hero-scroll span::after{animation:none}
   .header,.header nav,.menu-toggle span,.advantages article,.filters button{transition:none}
 }
+
+/* About section balance */
+.about{grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);align-items:center;gap:clamp(70px,9vw,170px)}
+.about-copy{align-self:center;max-width:720px;padding:10px 0 10px 42px;border-left:1px solid rgba(185,146,77,.72);font-size:17px;line-height:1.85}
+.about-copy p{margin-bottom:22px}
+.about-copy p:first-child{font-size:18px;color:#24231f}
+.about-copy p:last-child{margin-bottom:0;color:#6a675f}
+@media(max-width:1000px){
+  .about{grid-template-columns:1fr;gap:42px}
+  .about-copy{max-width:760px;padding:4px 0 4px 30px}
+}
+@media(max-width:700px){
+  .about{gap:26px}
+  .about-copy{padding:0;border-left:0;font-size:15px;line-height:1.75}
+  .about-copy p:first-child{font-size:16px}
+}
