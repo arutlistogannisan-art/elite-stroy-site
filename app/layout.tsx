@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = `${protocol}://${host}/og.png`;
   return {
     title: "ELITE STROY — строительство домов под ключ",
-    description: "Проектирование и строительство частных домов под ключ в Краснодарском крае и Республике Адыгея.",
+    description: "Проектирование и строительство частных домов под ключ — от идеи и проекта до готового дома.",
     openGraph: {
       title: "ELITE STROY — дома под ключ",
       description: "Проектируем и строим частные дома, в которые хочется возвращаться.",

@@ -211,3 +211,19 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
   .turnkey-content>p{margin-bottom:30px;font-size:15px}
   .gallery-grid{grid-template-rows:repeat(3,62vw)}
 }
+
+/* Interactive process cards */
+.step-grid article{position:relative;isolation:isolate;overflow:hidden;transition:transform .55s cubic-bezier(.2,.7,.2,1),box-shadow .55s ease,color .45s ease}
+.step-grid article::before{content:"";position:absolute;z-index:-1;inset:-2px;background:linear-gradient(135deg,#d3b06a,#a67d38);transform:translateX(-112%) skewX(-8deg);transform-origin:left;transition:transform .65s cubic-bezier(.22,.72,.16,1)}
+.step-grid article>*{position:relative;z-index:1;transition:color .4s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+.step-grid article:hover{z-index:2;color:#171714;transform:translateY(-12px);box-shadow:0 28px 55px rgba(53,42,20,.18)}
+.step-grid article:hover::before{transform:translateX(0) skewX(0)}
+.step-grid article:hover b{color:#171714;transform:translateX(8px)}
+.step-grid article:hover h3{transform:translateX(8px)}
+.step-grid article:hover p{color:#2c281f;transform:translateX(8px)}
+@media(max-width:700px){
+  .step-grid article:hover{transform:translateY(-5px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .step-grid article,.step-grid article::before,.step-grid article>*{transition:none}
+}
