@@ -49,6 +49,9 @@ const steps = [
 export default function Home() {
   const [filter, setFilter] = useState("Все");
   const [sent, setSent] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
   const visible = filter === "Все" ? projects : projects.filter((p) => p.type === filter);
 
@@ -75,27 +78,73 @@ export default function Home() {
   }, [filter]);
 
   useEffect(() => {
-    document.body.style.overflow = selectedProject ? "hidden" : "";
+    document.body.style.overflow = selectedProject || menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [selectedProject]);
+  }, [selectedProject, menuOpen]);
+
+  useEffect(() => {
+    const updateScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
+      setScrolled(window.scrollY > 18);
+    };
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
+
+  const submitLead = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const message = [
+      "Здравствуйте! Хочу получить расчёт строительства дома.",
+      `Имя: ${data.get("name") || "не указано"}`,
+      `Телефон: ${data.get("phone") || "не указан"}`,
+      `Проект: ${data.get("project") || "ещё выбираю"}`,
+    ].join("\n");
+    window.open(`https://wa.me/79182422336?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    setSent(true);
+  };
 
   return (
     <main>
-      <header className="header">
+      <div className="scroll-progress" aria-hidden="true"><span style={{ transform: `scaleX(${scrollProgress})` }} /></div>
+      <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="brand" href="#top" aria-label="Elite Stroy — на главную">
           <img className="brand-logo" src="/elite-stroy-logo.png" alt="ELITE STROY — реализуем ваши амбиции" />
         </a>
-        <nav aria-label="Основная навигация">
-          <a href="#about">О компании</a>
-          <a href="#projects">Проекты</a>
-          <a href="#steps">Как работаем</a>
-          <a href="#contacts">Контакты</a>
+        <nav className={menuOpen ? "is-open" : ""} aria-label="Основная навигация">
+          <a href="#about" onClick={() => setMenuOpen(false)}>О компании</a>
+          <a href="#projects" onClick={() => setMenuOpen(false)}>Проекты</a>
+          <a href="#steps" onClick={() => setMenuOpen(false)}>Как работаем</a>
+          <a href="#contacts" onClick={() => setMenuOpen(false)}>Контакты</a>
         </nav>
         <a className="phone" href="tel:+79182422336">+7 918 242-23-36</a>
+        <button
+          className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
+        >
+          <span /><span />
+        </button>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-shade" />
+        <div className="hero-orbit" aria-hidden="true" />
         <div className="hero-content">
           <div className="eyebrow">Краснодарский край · Республика Адыгея</div>
           <h1>Строим дома,<br />в которые хочется возвращаться</h1>
@@ -110,6 +159,7 @@ export default function Home() {
           <span><b>10+</b> банков-партнёров</span>
           <span><b>полный цикл</b> под ключ</span>
         </div>
+        <a className="hero-scroll" href="#about" aria-label="Прокрутить к разделу о компании"><span />Листайте</a>
       </section>
 
       <section className="about section" id="about">
@@ -218,7 +268,7 @@ export default function Home() {
             <span>Пн–Пт, 09:00–18:00</span>
           </div>
         </div>
-        <form className="contact-form" onSubmit={(e) => {e.preventDefault(); setSent(true);}}>
+        <form className="contact-form" onSubmit={submitLead}>
           {sent ? <div className="success"><b>Спасибо!</b><p>Заявка подготовлена. Для быстрой связи напишите нам в WhatsApp или позвоните.</p><a className="button gold" href="https://wa.me/79182422336">Написать в WhatsApp</a></div> : <>
             <label>Ваше имя<input required name="name" placeholder="Как к вам обращаться?" /></label>
             <label>Телефон<input required name="phone" type="tel" placeholder="+7 (___) ___-__-__" /></label>
