@@ -227,3 +227,22 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
 @media(prefers-reduced-motion:reduce){
   .step-grid article,.step-grid article::before,.step-grid article>*{transition:none}
 }
+
+/* Interactive turnkey cycle */
+.blueprint-grid{animation:blueprintDrift 18s linear infinite}
+.cycle-list div{position:relative;overflow:hidden;cursor:default;transition:border-color .4s ease,transform .45s cubic-bezier(.2,.7,.2,1),padding-left .45s ease}
+.cycle-list div::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(185,146,77,.28),rgba(185,146,77,.05));transform:translateX(-102%);transition:transform .6s cubic-bezier(.2,.72,.18,1)}
+.cycle-list div>*{position:relative;z-index:1;transition:color .4s ease,transform .45s ease}
+.cycle-list div:hover{border-color:rgba(221,188,121,.75);padding-left:14px;transform:translateX(7px)}
+.cycle-list div:hover::before{transform:translateX(0)}
+.cycle-list div:hover b{color:#f0c978;transform:scale(1.18)}
+.cycle-list div:hover span{color:#fff;transform:translateX(5px)}
+.turnkey-content li{position:relative;overflow:hidden;padding-left:0;transition:padding-left .45s cubic-bezier(.2,.7,.2,1),color .4s ease,border-color .4s ease}
+.turnkey-content li::before{content:"";position:absolute;left:0;top:50%;width:0;height:1px;background:linear-gradient(90deg,#d3ad62,transparent);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.turnkey-content li:hover{padding-left:34px;color:#e6c37e;border-color:#8f6f38}
+.turnkey-content li:hover::before{width:25px}
+@keyframes blueprintDrift{to{background-position:42px 42px}}
+@media(prefers-reduced-motion:reduce){
+  .blueprint-grid{animation:none}
+  .cycle-list div,.cycle-list div::before,.cycle-list div>*,.turnkey-content li,.turnkey-content li::before{transition:none}
+}
