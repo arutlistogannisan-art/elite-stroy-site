@@ -146,7 +146,6 @@ export default function Home() {
         <div className="hero-shade" />
         <div className="hero-orbit" aria-hidden="true" />
         <div className="hero-content">
-          <div className="eyebrow">Краснодарский край · Республика Адыгея</div>
           <h1>Строим дома,<br />в которые хочется возвращаться</h1>
           <p>Проектирование и строительство частных домов под ключ — от подбора участка до интерьера и благоустройства.</p>
           <div className="hero-actions">

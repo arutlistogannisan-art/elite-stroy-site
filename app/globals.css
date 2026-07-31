@@ -150,7 +150,7 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
 .hero-orbit{position:absolute;z-index:0;right:-12vw;top:7%;width:48vw;aspect-ratio:1;border:1px solid rgba(209,173,104,.24);border-radius:50%;animation:orbitPulse 6s ease-in-out infinite}
 .hero-orbit::before,.hero-orbit::after{content:"";position:absolute;border:1px solid rgba(209,173,104,.14);border-radius:50%}
 .hero-orbit::before{inset:12%}.hero-orbit::after{inset:27%}
-.hero-scroll{position:absolute;z-index:2;left:7vw;bottom:4vw;display:flex;align-items:center;gap:12px;color:#d8d3c9;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+.hero-scroll{position:absolute;z-index:2;left:7vw;bottom:1.5vw;display:flex;align-items:center;gap:12px;color:#d8d3c9;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
 .hero-scroll span{width:42px;height:1px;background:#d1ad68;position:relative;overflow:hidden}
 .hero-scroll span::after{content:"";position:absolute;inset:0;background:white;transform:translateX(-100%);animation:scrollLine 2.2s ease-in-out infinite}
 @keyframes orbitPulse{50%{transform:scale(1.035);opacity:.65}}
