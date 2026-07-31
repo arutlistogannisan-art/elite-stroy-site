@@ -251,7 +251,7 @@ export default function Home() {
         <div className="eyebrow dark">Реализованные объекты</div>
         <h2>Строим с вниманием к деталям</h2>
         <div className="gallery-grid">
-          {["/assets/8631b20f7dd77f45.JPG","/assets/30246fa6c41d5d1e.JPG","/assets/d4140a95ec1286d3.JPG","/assets/7eebbc8d2b83549a.JPG"].map((src, i) => <div key={src} style={{backgroundImage:`url(${src})`}} aria-label={`Фотография объекта ${i+1}`} />)}
+          {["/assets/8631b20f7dd77f45.JPG","/assets/30246fa6c41d5d1e.JPG","/assets/d4140a95ec1286d3.JPG"].map((src, i) => <div key={src} style={{backgroundImage:`url(${src})`}} aria-label={`Фотография готового объекта ${i+1}`} />)}
         </div>
       </section>
 

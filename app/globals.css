@@ -197,3 +197,17 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
   .about-copy{padding:0;border-left:0;font-size:15px;line-height:1.75}
   .about-copy p:first-child{font-size:16px}
 }
+
+/* Turnkey copy and completed work gallery */
+.turnkey-content h2{margin:0 0 34px;line-height:.98}
+.turnkey-content>p{max-width:620px;margin:0 0 38px;font-size:16px;line-height:1.85}
+.turnkey-content ul{margin-top:0}
+.gallery-grid>div:nth-child(2),.gallery-grid>div:nth-child(3){grid-column:span 2}
+@media(max-width:1000px){
+  .gallery-grid>div:nth-child(2),.gallery-grid>div:nth-child(3){grid-column:span 1}
+}
+@media(max-width:700px){
+  .turnkey-content h2{margin-bottom:24px}
+  .turnkey-content>p{margin-bottom:30px;font-size:15px}
+  .gallery-grid{grid-template-rows:repeat(3,62vw)}
+}
