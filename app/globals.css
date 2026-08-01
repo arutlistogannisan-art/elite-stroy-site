@@ -269,3 +269,18 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
 @media(max-width:700px){
   footer>div:last-child{width:100%;justify-content:flex-start;gap:22px;padding-right:165px}
 }
+
+/* Mobile hero art direction */
+@media(max-width:700px){
+  .hero{height:auto;min-height:840px;padding:370px 18px 42px;align-items:flex-end;background:#0e0e0c}
+  .hero::before{inset:0;background-size:auto 400px;background-position:76% top;background-repeat:no-repeat;animation:none;transform:none}
+  .hero-shade{background:linear-gradient(180deg,rgba(8,9,7,.04) 0%,rgba(8,9,7,.12) 32%,rgba(8,9,7,.88) 48%,#0e0e0c 58%,#0e0e0c 100%)}
+  .hero-orbit{display:none}
+  .hero-content{width:100%;max-width:none}
+  .hero h1{max-width:12ch;font-size:clamp(2.7rem,12.8vw,3.45rem);line-height:.94}
+  .hero p{max-width:34rem;color:#d3cec4}
+}
+@media(max-width:380px){
+  .hero{min-height:820px;padding-top:345px}
+  .hero::before{background-size:auto 375px;background-position:77% top}
+}
