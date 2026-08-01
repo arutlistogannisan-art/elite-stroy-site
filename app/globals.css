@@ -391,3 +391,13 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
   .hero::before{background-size:auto 340px}
   .hero h1{font-size:2.15rem}
 }
+
+/* Swipeable project catalogue on mobile */
+@media(max-width:700px){
+  .projects{overflow:hidden}
+  .project-grid{display:flex;gap:14px;width:calc(100vw - 18px);padding:0 18px 18px 0;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .project-grid::-webkit-scrollbar{display:none}
+  .project-card{flex:0 0 min(86vw,430px);scroll-snap-align:start;scroll-snap-stop:always}
+  .project-card:hover{transform:none;box-shadow:none}
+  .project-image{height:58vw;min-height:235px;max-height:310px}
+}

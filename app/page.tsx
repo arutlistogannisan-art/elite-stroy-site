@@ -367,9 +367,9 @@ export default function Home() {
         <div><a href="https://t.me/E_S_g_23">Telegram</a><a href="https://wa.me/79182422336">WhatsApp</a><a href="https://www.instagram.com/elite_stroy_group">Instagram</a></div>
       </footer>
 
-      <a className="floating-contact" href="https://wa.me/79182422336" target="_blank" rel="noreferrer" aria-label="Написать ELITE STROY в WhatsApp">
-        <span>Написать</span>
-        <b>WA</b>
+      <a className="floating-contact" href="#contacts" onClick={(event) => goToSection(event, "contacts")} aria-label="Перейти ко всем способам связи с ELITE STROY">
+        <span>Связаться</span>
+        <b>↗</b>
       </a>
 
       {selectedProject && (
