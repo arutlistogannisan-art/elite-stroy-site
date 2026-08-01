@@ -143,7 +143,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main data-build="utf8-clean-v2">
       <div className="scroll-progress" aria-hidden="true"><span style={{ transform: `scaleX(${scrollProgress})` }} /></div>
       <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="brand" href="#top" onClick={(event) => goToSection(event, "top")} aria-label="Elite Stroy — на главную">
