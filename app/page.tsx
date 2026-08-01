@@ -61,7 +61,7 @@ export default function Home() {
 
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>(
-      ".section h2, .about-copy, .advantages article, .project-card, .turnkey-content > *, .step-grid article, .gallery-grid > div, .contact-copy > *, .contact-form"
+      ".section h2, .about-copy, .advantages article, .project-card, .cycle-title, .cycle-list, .step-grid article, .gallery-grid > div, .contact-copy > *, .contact-form"
     );
     elements.forEach((element, index) => {
       element.classList.add("reveal");
@@ -249,18 +249,6 @@ export default function Home() {
             <span>ELITE STROY / ОДНА КОМАНДА</span>
             <b>100%</b>
           </div>
-        </div>
-        <div className="turnkey-content">
-          <div className="eyebrow">Полный цикл</div>
-          <h2>Дом под ключ —<br />одна команда</h2>
-          <p>От архитектуры и инженерных сетей до чистовой отделки, дизайна интерьера, ландшафта и систем безопасности.</p>
-          <ul>
-            <li>Архитектурное проектирование</li>
-            <li>Строительство и коммуникации</li>
-            <li>Ремонт и уникальные интерьеры</li>
-            <li>Ландшафтное благоустройство</li>
-          </ul>
-          <a href="#contacts" className="button gold" onClick={(event) => goToSection(event, "contacts")}>Обсудить будущий дом</a>
         </div>
       </section>
 
