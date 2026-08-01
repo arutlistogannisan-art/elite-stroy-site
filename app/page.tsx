@@ -279,7 +279,7 @@ export default function Home() {
         <form className="contact-form" onSubmit={submitLead}>
           {sent ? <div className="success"><b>Спасибо!</b><p>Заявка подготовлена. Для быстрой связи напишите нам в WhatsApp или позвоните.</p><a className="button gold" href="https://wa.me/79182422336">Написать в WhatsApp</a></div> : <>
             <label>Ваше имя<input required name="name" placeholder="Как к вам обращаться?" /></label>
-            <label>Телефон<input required name="phone" type="tel" placeholder="+7 (___) ___-__-__" /></label>
+            <label>Телефон<input required name="phone" type="tel" defaultValue="+7 " placeholder="+7 (___) ___-__-__" /></label>
             <label>Какой дом планируете?<select name="project"><option>Ещё выбираю</option><option>GRIG — 120 м²</option><option>SHERRY — 160 м²</option><option>GREY GARDENS — от 240 м²</option><option>Индивидуальный проект</option></select></label>
             <button className="button gold" type="submit">Получить расчёт</button>
             <small>Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</small>
