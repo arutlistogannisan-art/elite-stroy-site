@@ -369,7 +369,7 @@ export default function Home() {
 
       <a className="floating-contact" href="#contacts" onClick={(event) => goToSection(event, "contacts")} aria-label="Перейти ко всем способам связи с ELITE STROY">
         <span>Связаться</span>
-        <b>↗</b>
+        <b aria-hidden="true"></b>
       </a>
 
       {selectedProject && (
