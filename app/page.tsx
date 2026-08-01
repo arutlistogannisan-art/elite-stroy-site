@@ -72,8 +72,12 @@ const workCases = [
     label: "Индивидуальная архитектура",
     title: "Резиденция в классическом стиле",
     description: "Выразительный загородный дом со сложной геометрией кровли, колоннами и архитектурным декором фасада.",
-    cover: "/assets/case-classic-residence.png",
-    images: ["/assets/case-classic-residence.png"],
+    cover: "/assets/case-classic-finished.png",
+    images: [
+      "/assets/case-classic-finished.png", "/assets/case-classic-interior-01.jpg",
+      "/assets/case-classic-interior-02.jpg", "/assets/case-classic-interior-03.jpg",
+      "/assets/case-classic-interior-04.jpg", "/assets/case-classic-interior-05.jpg",
+    ],
   },
 ];
 
