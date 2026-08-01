@@ -88,7 +88,7 @@ export default function Home() {
   const [sent, setSent] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollProgressRef = useRef<HTMLSpanElement>(null);
   const [projectChoice, setProjectChoice] = useState(projectOptions[0]);
   const projectSelectRef = useRef<HTMLDetailsElement>(null);
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
@@ -123,14 +123,33 @@ export default function Home() {
   }, [selectedProject, selectedWorkCase, menuOpen]);
 
   useEffect(() => {
+    let frame = 0;
+    let headerIsScrolled = window.scrollY > 18;
+    setScrolled(headerIsScrolled);
+
     const updateScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(max > 0 ? Math.min(1, window.scrollY / max) : 0);
-      setScrolled(window.scrollY > 18);
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+        if (scrollProgressRef.current) {
+          scrollProgressRef.current.style.transform = `scaleX(${progress})`;
+        }
+
+        const nextHeaderState = window.scrollY > 18;
+        if (nextHeaderState !== headerIsScrolled) {
+          headerIsScrolled = nextHeaderState;
+          setScrolled(nextHeaderState);
+        }
+      });
     };
     updateScroll();
     window.addEventListener("scroll", updateScroll, { passive: true });
-    return () => window.removeEventListener("scroll", updateScroll);
+    return () => {
+      window.removeEventListener("scroll", updateScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
@@ -181,7 +200,7 @@ export default function Home() {
 
   return (
     <main data-build="utf8-clean-v2">
-      <div className="scroll-progress" aria-hidden="true"><span style={{ transform: `scaleX(${scrollProgress})` }} /></div>
+      <div className="scroll-progress" aria-hidden="true"><span ref={scrollProgressRef} /></div>
       <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="brand" href="#top" onClick={(event) => goToSection(event, "top")} aria-label="Elite Stroy — на главную">
           <img className="brand-logo" src="/elite-stroy-logo.png" alt="ELITE STROY — реализуем ваши амбиции" />
