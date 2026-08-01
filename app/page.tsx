@@ -61,7 +61,7 @@ export default function Home() {
 
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>(
-      ".section h2, .about-copy, .advantages article, .project-card, .cycle-title, .cycle-list, .step-grid article, .gallery-grid > div, .contact-copy > *, .contact-form"
+      ".section h2, .about-copy, .advantages article, .project-card, .cycle-title, .cycle-list, .step-grid article, .gallery-grid > article, .contact-copy > *, .contact-form"
     );
     elements.forEach((element, index) => {
       element.classList.add("reveal");
@@ -152,6 +152,7 @@ export default function Home() {
         <nav className={menuOpen ? "is-open" : ""} aria-label="Основная навигация">
           <a href="#about" onClick={(event) => goToSection(event, "about")}>О компании</a>
           <a href="#projects" onClick={(event) => goToSection(event, "projects")}>Проекты</a>
+          <a href="#works" onClick={(event) => goToSection(event, "works")}>Наши работы</a>
           <a href="#steps" onClick={(event) => goToSection(event, "steps")}>Как работаем</a>
           <a href="#contacts" onClick={(event) => goToSection(event, "contacts")}>Контакты</a>
         </nav>
@@ -259,11 +260,21 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="gallery section">
-        <div className="eyebrow dark">Реализованные объекты</div>
-        <h2>Строим с вниманием к деталям</h2>
+      <section className="gallery section" id="works">
+        <div className="section-head works-head">
+          <div><div className="eyebrow dark">Наши работы</div><h2>Результат, который<br />говорит за нас</h2></div>
+          <p>Показываем не только готовые дома, но и то, как они создаются — честно, поэтапно и с вниманием к каждой детали.</p>
+        </div>
         <div className="gallery-grid">
-          {["/assets/8631b20f7dd77f45.JPG","/assets/30246fa6c41d5d1e.JPG","/assets/d4140a95ec1286d3.JPG"].map((src, i) => <div key={src} style={{backgroundImage:`url(${src})`}} aria-label={`Фотография готового объекта ${i+1}`} />)}
+          {[
+            ["/assets/8631b20f7dd77f45.JPG", "Готовый дом", "Современный частный дом"],
+            ["/assets/30246fa6c41d5d1e.JPG", "Ход строительства", "Инженерные узлы и детали"],
+            ["/assets/d4140a95ec1286d3.JPG", "Реализованный объект", "Дом и благоустройство участка"],
+          ].map(([src, label, title]) => (
+            <article className="work-item" key={src} style={{backgroundImage:`url(${src})`}} aria-label={`${label}: ${title}`}>
+              <div><span>{label}</span><h3>{title}</h3></div>
+            </article>
+          ))}
         </div>
       </section>
 
