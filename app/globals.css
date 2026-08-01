@@ -395,7 +395,7 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
 /* Swipeable project catalogue on mobile */
 @media(max-width:700px){
   .projects{overflow:hidden}
-  .project-grid{display:flex;gap:14px;width:calc(100vw - 18px);padding:0 18px 20px 0;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-left:0;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x pinch-zoom}
+  .project-grid{display:flex;gap:14px;width:calc(100vw - 18px);padding:0 18px 20px 0;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scroll-padding-left:0;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .project-grid::-webkit-scrollbar{display:none}
   .project-card{flex:0 0 min(82vw,410px);scroll-snap-align:start;scroll-snap-stop:always;transition:transform .7s cubic-bezier(.22,.72,.18,1),box-shadow .7s ease}
   .project-card:hover{transform:none;box-shadow:none}
@@ -404,8 +404,8 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
 
 /* Brand-native contact icon without system emoji */
 .floating-contact b{position:relative;font-size:0}
-.floating-contact b::before{content:"";position:absolute;left:12px;top:21px;width:18px;height:1.5px;background:#171714;transform:rotate(-38deg);transform-origin:right center}
-.floating-contact b::after{content:"";position:absolute;right:10px;top:11px;width:9px;height:9px;border-top:1.5px solid #171714;border-right:1.5px solid #171714}
+.floating-contact b::before{content:"";position:absolute;left:12px;top:12px;width:18px;height:14px;border:1.5px solid #171714;border-radius:6px}
+.floating-contact b::after{content:"";position:absolute;left:15px;top:24px;width:6px;height:6px;background:var(--gold);border-left:1.5px solid #171714;border-bottom:1.5px solid #171714;transform:skewY(-35deg) rotate(-18deg)}
 @media(max-width:700px){
   .floating-contact{width:58px;height:58px;padding:7px;background:rgba(17,17,14,.94);border-color:rgba(211,174,101,.78);box-shadow:0 12px 34px rgba(0,0,0,.38)}
   .floating-contact b{width:42px;height:42px}
