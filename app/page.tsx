@@ -113,8 +113,8 @@ export default function Home() {
     const data = new FormData(event.currentTarget);
     const message = [
       "Здравствуйте! Хочу получить расчёт строительства дома.",
-      `Имя: ${data.get("name") || "не указано"}`,
-      `Телефон: ${data.get("phone") || "не указан"}`,
+      `Имя: ${data.get("lead_name") || "не указано"}`,
+      `Телефон: ${data.get("lead_phone") || "не указан"}`,
       `Проект: ${data.get("project") || "ещё выбираю"}`,
     ].join("\n");
     window.open(`https://wa.me/79182422336?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
@@ -280,10 +280,10 @@ export default function Home() {
             <span>Пн–Пт, 09:00–18:00</span>
           </div>
         </div>
-        <form className="contact-form" onSubmit={submitLead}>
+        <form className="contact-form" onSubmit={submitLead} autoComplete="off">
           {sent ? <div className="success"><b>Спасибо!</b><p>Заявка подготовлена. Для быстрой связи напишите нам в WhatsApp или позвоните.</p><a className="button gold" href="https://wa.me/79182422336">Написать в WhatsApp</a></div> : <>
-            <label>Ваше имя<input required name="name" placeholder="Как к вам обращаться?" /></label>
-            <label>Телефон<input required name="phone" type="tel" defaultValue="+7 " placeholder="+7 (___) ___-__-__" /></label>
+            <label>Ваше имя<input required name="lead_name" autoComplete="off" data-lpignore="true" data-1p-ignore placeholder="Как к вам обращаться?" /></label>
+            <label>Телефон<input required name="lead_phone" type="tel" autoComplete="off" data-lpignore="true" data-1p-ignore defaultValue="+7 " placeholder="+7 (___) ___-__-__" /></label>
             <label>Какой дом планируете?
               <input type="hidden" name="project" value={projectChoice} />
               <details className="project-select" ref={projectSelectRef}>
