@@ -117,18 +117,28 @@ export default function Home() {
     setSent(true);
   };
 
+  const goToSection = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    event.preventDefault();
+    setMenuOpen(false);
+    setSelectedProject(null);
+    window.history.replaceState(null, "", `#${sectionId}`);
+    window.setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
+
   return (
     <main>
       <div className="scroll-progress" aria-hidden="true"><span style={{ transform: `scaleX(${scrollProgress})` }} /></div>
       <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
-        <a className="brand" href="#top" aria-label="Elite Stroy — на главную">
+        <a className="brand" href="#top" onClick={(event) => goToSection(event, "top")} aria-label="Elite Stroy — на главную">
           <img className="brand-logo" src="/elite-stroy-logo.png" alt="ELITE STROY — реализуем ваши амбиции" />
         </a>
         <nav className={menuOpen ? "is-open" : ""} aria-label="Основная навигация">
-          <a href="#about" onClick={() => setMenuOpen(false)}>О компании</a>
-          <a href="#projects" onClick={() => setMenuOpen(false)}>Проекты</a>
-          <a href="#steps" onClick={() => setMenuOpen(false)}>Как работаем</a>
-          <a href="#contacts" onClick={() => setMenuOpen(false)}>Контакты</a>
+          <a href="#about" onClick={(event) => goToSection(event, "about")}>О компании</a>
+          <a href="#projects" onClick={(event) => goToSection(event, "projects")}>Проекты</a>
+          <a href="#steps" onClick={(event) => goToSection(event, "steps")}>Как работаем</a>
+          <a href="#contacts" onClick={(event) => goToSection(event, "contacts")}>Контакты</a>
         </nav>
         <a className="phone" href="tel:+79182422336">+7 918 242-23-36</a>
         <button
@@ -149,8 +159,8 @@ export default function Home() {
           <h1>Строим дома,<br />в которые хочется возвращаться</h1>
           <p>Проектирование и строительство частных домов под ключ — от подбора участка до интерьера и благоустройства.</p>
           <div className="hero-actions">
-            <a className="button gold" href="#projects">Выбрать проект</a>
-            <a className="button ghost" href="#contacts">Рассчитать стоимость</a>
+            <a className="button gold" href="#projects" onClick={(event) => goToSection(event, "projects")}>Выбрать проект</a>
+            <a className="button ghost" href="#contacts" onClick={(event) => goToSection(event, "contacts")}>Рассчитать стоимость</a>
           </div>
         </div>
         <div className="hero-stats">
@@ -158,7 +168,7 @@ export default function Home() {
           <span><b>10+</b> банков-партнёров</span>
           <span><b>полный цикл</b> под ключ</span>
         </div>
-        <a className="hero-scroll" href="#about" aria-label="Прокрутить к разделу о компании"><span />Листайте</a>
+        <a className="hero-scroll" href="#about" onClick={(event) => goToSection(event, "about")} aria-label="Прокрутить к разделу о компании"><span />Листайте</a>
       </section>
 
       <section className="about section" id="about">
@@ -235,7 +245,7 @@ export default function Home() {
             <li>Ремонт и уникальные интерьеры</li>
             <li>Ландшафтное благоустройство</li>
           </ul>
-          <a href="#contacts" className="button gold">Обсудить будущий дом</a>
+          <a href="#contacts" className="button gold" onClick={(event) => goToSection(event, "contacts")}>Обсудить будущий дом</a>
         </div>
       </section>
 
@@ -308,7 +318,7 @@ export default function Home() {
             <div className="feature-list">
               {selectedProject.features.map((feature) => <span key={feature}>{feature}</span>)}
             </div>
-            <a className="button gold" href="#contacts" onClick={() => setSelectedProject(null)}>Получить планировку и смету</a>
+            <a className="button gold" href="#contacts" onClick={(event) => goToSection(event, "contacts")}>Получить планировку и смету</a>
           </div>
         </div>
       )}
