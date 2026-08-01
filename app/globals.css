@@ -372,3 +372,22 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
   footer{position:relative;min-height:94px}
   footer>p{position:absolute;left:50%;top:50%;width:max-content;max-width:42vw;text-align:center;transform:translate(-50%,-50%)}
 }
+
+/* Mobile hero balance and unobstructed controls */
+@media(max-width:700px){
+  .hero{min-height:740px;padding:330px 18px 76px;align-items:flex-end}
+  .hero::before{background-size:auto 360px;background-position:75% top}
+  .hero-shade{background:linear-gradient(180deg,rgba(8,9,7,.02) 0%,rgba(8,9,7,.1) 29%,rgba(8,9,7,.83) 46%,#0e0e0c 56%,#0e0e0c 100%)}
+  .hero h1{max-width:100%;margin-bottom:18px;font-size:clamp(2.2rem,9.8vw,2.65rem);line-height:.98;letter-spacing:-.04em}
+  .hero p{font-size:13px;line-height:1.55}
+  .hero-actions{margin-top:22px}
+  .floating-contact{width:54px;height:54px;padding:6px;gap:0}
+  .floating-contact span{display:none}
+  .floating-contact b{width:40px;height:40px}
+  footer>div:last-child{padding-right:64px}
+}
+@media(max-width:380px){
+  .hero{min-height:720px;padding-top:315px}
+  .hero::before{background-size:auto 340px}
+  .hero h1{font-size:2.15rem}
+}
