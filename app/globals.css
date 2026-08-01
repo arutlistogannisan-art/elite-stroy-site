@@ -284,3 +284,9 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
   .hero{min-height:820px;padding-top:345px}
   .hero::before{background-size:auto 375px;background-position:77% top}
 }
+
+/* Centered footer caption */
+@media(min-width:701px){
+  footer{position:relative;min-height:94px}
+  footer>p{position:absolute;left:50%;top:50%;width:max-content;max-width:42vw;text-align:center;transform:translate(-50%,-50%)}
+}
