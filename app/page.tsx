@@ -288,7 +288,6 @@ export default function Home() {
       </section>
 
       <footer>
-        <div className="brand footer-brand"><img className="brand-logo" src="/elite-stroy-logo.png" alt="ELITE STROY" /></div>
         <p>Проектирование и строительство частных домов под ключ</p>
         <div><a href="https://t.me/E_S_g_23">Telegram</a><a href="https://wa.me/79182422336">WhatsApp</a><a href="https://www.instagram.com/elite_stroy_group">Instagram</a></div>
       </footer>
