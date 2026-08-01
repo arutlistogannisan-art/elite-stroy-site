@@ -102,10 +102,21 @@ export default function Home() {
       if (event.key === "Escape") {
         setMenuOpen(false);
         setSelectedProject(null);
+        projectSelectRef.current?.removeAttribute("open");
+      }
+    };
+    const closeProjectSelect = (event: PointerEvent) => {
+      const select = projectSelectRef.current;
+      if (select?.open && !select.contains(event.target as Node)) {
+        select.removeAttribute("open");
       }
     };
     window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeProjectSelect);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeProjectSelect);
+    };
   }, []);
 
   const submitLead = (event: React.FormEvent<HTMLFormElement>) => {
