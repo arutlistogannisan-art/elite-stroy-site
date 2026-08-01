@@ -261,3 +261,11 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
 .project-select-menu button.is-selected::after{content:"";position:absolute;right:16px;top:50%;width:7px;height:12px;border-right:1px solid #d7af62;border-bottom:1px solid #d7af62;transform:translateY(-65%) rotate(45deg)}
 @keyframes selectOpen{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.project-select summary i,.project-select-menu,.project-select-menu button{animation:none;transition:none}}
+
+/* Keep footer links clear of the floating contact button */
+@media(min-width:701px){
+  footer>div:last-child{margin-right:clamp(180px,14vw,250px)}
+}
+@media(max-width:700px){
+  footer>div:last-child{width:100%;justify-content:flex-start;gap:22px;padding-right:165px}
+}
