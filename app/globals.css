@@ -148,6 +148,44 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
   .work-item>div{left:20px;right:20px;bottom:20px}
 }
 
+/* Case studies and full-screen work gallery */
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.case-card{background:#171714;color:white;overflow:hidden}
+.case-card:last-child:nth-child(odd){grid-column:1/-1;display:grid;grid-template-columns:1.35fr .65fr}
+.case-cover{position:relative;width:100%;height:clamp(380px,38vw,650px);border:0;background:center/cover no-repeat;cursor:pointer;overflow:hidden}
+.case-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,8,.45));transition:background .5s ease}
+.case-cover span{position:absolute;z-index:1;top:24px;left:24px;color:#111;background:#c7a25d;min-width:48px;height:48px;display:grid;place-items:center;font:500 14px Georgia,serif}
+.case-card:last-child:nth-child(odd) .case-cover{height:520px}
+.case-copy{padding:30px}
+.case-card:last-child:nth-child(odd) .case-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(35px,5vw,80px)}
+.case-copy>span,.work-modal-head span{color:#d0aa62;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.case-copy h3{margin:12px 0 16px;font:500 clamp(1.9rem,3vw,3.2rem)/1 "Playfair Display",Georgia,serif;letter-spacing:-.03em}
+.case-copy p{max-width:610px;color:#aaa69d;font-size:13px;line-height:1.7}
+.case-copy button{margin-top:18px;padding:0;border:0;background:none;color:#d7b36c;font:600 10px Manrope,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.case-card:hover .case-cover::after{background:rgba(10,10,8,.12)}
+.work-modal{position:fixed;z-index:110;inset:0;background:#11110f;color:white;overflow-y:auto;padding:clamp(70px,8vw,130px) max(4vw,24px) 80px;animation:modalIn .45s cubic-bezier(.2,.65,.25,1)}
+.work-modal-head{display:grid;grid-template-columns:1.1fr .9fr;align-items:end;gap:8vw;margin:0 auto 54px;max-width:1600px}
+.work-modal-head h2{margin:14px 0 0;font-size:clamp(3.2rem,6vw,6.8rem)}
+.work-modal-head p{color:#aaa69d;max-width:560px;line-height:1.8}
+.work-modal-grid{max-width:1600px;margin:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.work-modal-grid img{width:100%;height:auto;min-height:360px;max-height:760px;object-fit:cover;background:#222}
+.work-modal-grid img:first-child{grid-column:1/-1;max-height:900px}
+@media(max-width:900px){
+  .case-grid{grid-template-columns:1fr}
+  .case-card:last-child:nth-child(odd){grid-column:auto;display:block}
+  .case-card:last-child:nth-child(odd) .case-cover{height:64vw;min-height:300px}
+  .case-card:last-child:nth-child(odd) .case-copy{display:block;padding:30px}
+  .work-modal-head{grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:700px){
+  .case-cover{height:70vw;min-height:270px}
+  .case-copy{padding:24px 20px 28px}
+  .work-modal{padding:72px 12px 50px}
+  .work-modal-head{margin-bottom:34px;padding:0 8px}
+  .work-modal-grid{grid-template-columns:1fr;gap:8px}
+  .work-modal-grid img,.work-modal-grid img:first-child{grid-column:auto;min-height:230px;max-height:none}
+}
+
 @media(max-width:380px){
   .header{padding:0 10px}
   .brand-logo{width:104px}

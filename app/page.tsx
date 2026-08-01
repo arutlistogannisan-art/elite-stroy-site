@@ -46,6 +46,37 @@ const steps = [
   ["05", "Договор", "Закрепляем результат документально и приступаем к работе."],
 ];
 
+const workCases = [
+  {
+    label: "Завершённый объект",
+    title: "Дом с авторским интерьером",
+    description: "Кирпичный дом и полный цикл интерьерных работ — от фасада до сложной декоративной отделки.",
+    cover: "/assets/case-brick-exterior.jpg",
+    images: [
+      "/assets/case-brick-exterior.jpg", "/assets/case-brick-wide.jpg", "/assets/case-interior-lounge.jpg",
+      "/assets/case-interior-spa.jpg", "/assets/case-interior-hall.jpg",
+    ],
+  },
+  {
+    label: "Процесс и результат",
+    title: "Строительство частных домов",
+    description: "Реальные этапы наших объектов: фасады, кровля, остекление, благоустройство и готовые дома.",
+    cover: "/assets/case-build-finished-front.jpg",
+    images: [
+      "/assets/case-build-facade.jpg", "/assets/case-build-drone-angle.jpg", "/assets/case-build-roof-top.jpg",
+      "/assets/case-build-roof.jpg", "/assets/case-build-district.jpg", "/assets/case-build-finished-angle.jpg",
+      "/assets/case-build-finished-front.jpg", "/assets/case-build-windows.jpg",
+    ],
+  },
+  {
+    label: "Индивидуальная архитектура",
+    title: "Резиденция в классическом стиле",
+    description: "Выразительный загородный дом со сложной геометрией кровли, колоннами и архитектурным декором фасада.",
+    cover: "/assets/case-classic-residence.png",
+    images: ["/assets/case-classic-residence.png"],
+  },
+];
+
 const projectOptions = ["Ещё выбираю", "GRIG — 120 м²", "SHERRY — 160 м²", "GREY GARDENS — от 240 м²", "Индивидуальный проект"];
 
 export default function Home() {
@@ -57,11 +88,12 @@ export default function Home() {
   const [projectChoice, setProjectChoice] = useState(projectOptions[0]);
   const projectSelectRef = useRef<HTMLDetailsElement>(null);
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
+  const [selectedWorkCase, setSelectedWorkCase] = useState<(typeof workCases)[number] | null>(null);
   const visible = filter === "Все" ? projects : projects.filter((p) => p.type === filter);
 
   useEffect(() => {
     const elements = document.querySelectorAll<HTMLElement>(
-      ".section h2, .about-copy, .advantages article, .project-card, .cycle-title, .cycle-list, .step-grid article, .gallery-grid > article, .contact-copy > *, .contact-form"
+      ".section h2, .about-copy, .advantages article, .project-card, .cycle-title, .cycle-list, .step-grid article, .case-card, .contact-copy > *, .contact-form"
     );
     elements.forEach((element, index) => {
       element.classList.add("reveal");
@@ -82,9 +114,9 @@ export default function Home() {
   }, [filter]);
 
   useEffect(() => {
-    document.body.style.overflow = selectedProject || menuOpen ? "hidden" : "";
+    document.body.style.overflow = selectedProject || selectedWorkCase || menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [selectedProject, menuOpen]);
+  }, [selectedProject, selectedWorkCase, menuOpen]);
 
   useEffect(() => {
     const updateScroll = () => {
@@ -102,6 +134,7 @@ export default function Home() {
       if (event.key === "Escape") {
         setMenuOpen(false);
         setSelectedProject(null);
+        setSelectedWorkCase(null);
         projectSelectRef.current?.removeAttribute("open");
       }
     };
@@ -152,8 +185,8 @@ export default function Home() {
         <nav className={menuOpen ? "is-open" : ""} aria-label="Основная навигация">
           <a href="#about" onClick={(event) => goToSection(event, "about")}>О компании</a>
           <a href="#projects" onClick={(event) => goToSection(event, "projects")}>Проекты</a>
-          <a href="#works" onClick={(event) => goToSection(event, "works")}>Наши работы</a>
           <a href="#steps" onClick={(event) => goToSection(event, "steps")}>Как работаем</a>
+          <a href="#works" onClick={(event) => goToSection(event, "works")}>Наши работы</a>
           <a href="#contacts" onClick={(event) => goToSection(event, "contacts")}>Контакты</a>
         </nav>
         <a className="phone" href="tel:+79182422336">+7 918 242-23-36</a>
@@ -265,14 +298,18 @@ export default function Home() {
           <div><div className="eyebrow dark">Наши работы</div><h2>Результат, который<br />говорит за нас</h2></div>
           <p>Показываем не только готовые дома, но и то, как они создаются — честно, поэтапно и с вниманием к каждой детали.</p>
         </div>
-        <div className="gallery-grid">
-          {[
-            ["/assets/8631b20f7dd77f45.JPG", "Готовый дом", "Современный частный дом"],
-            ["/assets/30246fa6c41d5d1e.JPG", "Ход строительства", "Инженерные узлы и детали"],
-            ["/assets/d4140a95ec1286d3.JPG", "Реализованный объект", "Дом и благоустройство участка"],
-          ].map(([src, label, title]) => (
-            <article className="work-item" key={src} style={{backgroundImage:`url(${src})`}} aria-label={`${label}: ${title}`}>
-              <div><span>{label}</span><h3>{title}</h3></div>
+        <div className="case-grid">
+          {workCases.map((item, index) => (
+            <article className="case-card" key={item.title}>
+              <button className="case-cover" style={{backgroundImage:`url(${item.cover})`}} onClick={() => setSelectedWorkCase(item)} aria-label={`Открыть фотогалерею: ${item.title}`}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </button>
+              <div className="case-copy">
+                <span>{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <button onClick={() => setSelectedWorkCase(item)}>Смотреть {item.images.length} фото →</button>
+              </div>
             </article>
           ))}
         </div>
@@ -352,6 +389,19 @@ export default function Home() {
               {selectedProject.features.map((feature) => <span key={feature}>{feature}</span>)}
             </div>
             <a className="button gold" href="#contacts" onClick={(event) => goToSection(event, "contacts")}>Получить планировку и смету</a>
+          </div>
+        </div>
+      )}
+
+      {selectedWorkCase && (
+        <div className="work-modal" role="dialog" aria-modal="true" aria-label={`Фотогалерея: ${selectedWorkCase.title}`}>
+          <button className="modal-close" onClick={() => setSelectedWorkCase(null)} aria-label="Закрыть">×</button>
+          <div className="work-modal-head">
+            <div><span>{selectedWorkCase.label}</span><h2>{selectedWorkCase.title}</h2></div>
+            <p>{selectedWorkCase.description}</p>
+          </div>
+          <div className="work-modal-grid">
+            {selectedWorkCase.images.map((src, index) => <img src={src} alt={`${selectedWorkCase.title}, фотография ${index + 1}`} key={src} loading={index > 1 ? "lazy" : "eager"} />)}
           </div>
         </div>
       )}
