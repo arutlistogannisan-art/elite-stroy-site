@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const projects = [
   {
@@ -46,12 +46,16 @@ const steps = [
   ["05", "Договор", "Закрепляем результат документально и приступаем к работе."],
 ];
 
+const projectOptions = ["Ещё выбираю", "GRIG — 120 м²", "SHERRY — 160 м²", "GREY GARDENS — от 240 м²", "Индивидуальный проект"];
+
 export default function Home() {
   const [filter, setFilter] = useState("Все");
   const [sent, setSent] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [projectChoice, setProjectChoice] = useState(projectOptions[0]);
+  const projectSelectRef = useRef<HTMLDetailsElement>(null);
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
   const visible = filter === "Все" ? projects : projects.filter((p) => p.type === filter);
 
@@ -280,7 +284,27 @@ export default function Home() {
           {sent ? <div className="success"><b>Спасибо!</b><p>Заявка подготовлена. Для быстрой связи напишите нам в WhatsApp или позвоните.</p><a className="button gold" href="https://wa.me/79182422336">Написать в WhatsApp</a></div> : <>
             <label>Ваше имя<input required name="name" placeholder="Как к вам обращаться?" /></label>
             <label>Телефон<input required name="phone" type="tel" defaultValue="+7 " placeholder="+7 (___) ___-__-__" /></label>
-            <label>Какой дом планируете?<select name="project"><option>Ещё выбираю</option><option>GRIG — 120 м²</option><option>SHERRY — 160 м²</option><option>GREY GARDENS — от 240 м²</option><option>Индивидуальный проект</option></select></label>
+            <label>Какой дом планируете?
+              <input type="hidden" name="project" value={projectChoice} />
+              <details className="project-select" ref={projectSelectRef}>
+                <summary><span>{projectChoice}</span><i aria-hidden="true" /></summary>
+                <div className="project-select-menu" role="listbox" aria-label="Выберите проект">
+                  {projectOptions.map((option) => (
+                    <button
+                      type="button"
+                      role="option"
+                      aria-selected={projectChoice === option}
+                      className={projectChoice === option ? "is-selected" : ""}
+                      key={option}
+                      onClick={() => {
+                        setProjectChoice(option);
+                        projectSelectRef.current?.removeAttribute("open");
+                      }}
+                    >{option}</button>
+                  ))}
+                </div>
+              </details>
+            </label>
             <button className="button gold" type="submit">Получить расчёт</button>
             <small>Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</small>
           </>}

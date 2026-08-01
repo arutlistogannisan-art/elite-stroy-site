@@ -246,3 +246,18 @@ footer{padding:36px 5vw;background:#0e0e0c;color:white;display:flex;align-items:
   .blueprint-grid{animation:none}
   .cycle-list div,.cycle-list div::before,.cycle-list div>*,.turnkey-content li,.turnkey-content li::before{transition:none}
 }
+
+/* Premium project selector */
+.project-select{position:relative;margin-top:7px;text-transform:none;letter-spacing:normal}
+.project-select summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:52px;border-bottom:1px solid #aaa395;color:#1c1b17;font-size:15px;cursor:pointer;transition:border-color .3s ease,color .3s ease}
+.project-select summary::-webkit-details-marker{display:none}
+.project-select summary i{width:10px;height:10px;border-right:1px solid #9c7433;border-bottom:1px solid #9c7433;transform:rotate(45deg) translateY(-3px);transition:transform .35s ease}
+.project-select[open] summary{border-color:var(--gold);color:#8e672b}
+.project-select[open] summary i{transform:rotate(225deg) translate(-2px,-2px)}
+.project-select-menu{position:absolute;z-index:20;left:0;right:0;top:calc(100% + 8px);padding:8px;background:#211f1a;border:1px solid rgba(185,146,77,.65);box-shadow:0 24px 55px rgba(15,13,9,.28);animation:selectOpen .28s cubic-bezier(.2,.7,.2,1)}
+.project-select-menu button{position:relative;width:100%;min-height:46px;padding:0 38px 0 15px;border:0;border-bottom:1px solid rgba(210,181,120,.15);background:transparent;color:#ddd5c7;text-align:left;font:500 13px Manrope,Arial,sans-serif;cursor:pointer;transition:background-color .25s ease,color .25s ease,padding-left .3s ease}
+.project-select-menu button:last-child{border-bottom:0}
+.project-select-menu button:hover,.project-select-menu button.is-selected{padding-left:21px;background:linear-gradient(90deg,rgba(185,146,77,.24),transparent);color:#e3bc70}
+.project-select-menu button.is-selected::after{content:"";position:absolute;right:16px;top:50%;width:7px;height:12px;border-right:1px solid #d7af62;border-bottom:1px solid #d7af62;transform:translateY(-65%) rotate(45deg)}
+@keyframes selectOpen{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.project-select summary i,.project-select-menu,.project-select-menu button{animation:none;transition:none}}
