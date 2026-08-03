@@ -184,7 +184,7 @@ export default function Home() {
       `Телефон: ${data.get("lead_phone") || "не указан"}`,
       `Проект: ${data.get("project") || "ещё выбираю"}`,
     ].join("\n");
-    window.open(`https://wa.me/79182422336?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/79288473488?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     setSent(true);
   };
 
@@ -212,7 +212,7 @@ export default function Home() {
           <a href="#works" onClick={(event) => goToSection(event, "works")}>Наши работы</a>
           <a href="#contacts" onClick={(event) => goToSection(event, "contacts")}>Контакты</a>
         </nav>
-        <a className="phone" href="tel:+79182422336">+7 918 242-23-36</a>
+        <a className="phone" href="tel:+79288473488">+7 928 847-34-88</a>
         <button
           className={`menu-toggle ${menuOpen ? "is-open" : ""}`}
           type="button"
@@ -344,14 +344,14 @@ export default function Home() {
           <h2>Рассчитаем ваш дом</h2>
           <p>Расскажите, какой дом вы планируете. Мы свяжемся с вами, уточним детали и подготовим предварительный расчёт.</p>
           <div className="contact-details">
-            <a href="tel:+79182422336">+7 (918) 242-23-36</a>
+            <a href="tel:+79288473488">+7 (928) 847-34-88</a>
             <a href="mailto:stroy.prof.krd@yandex.ru">stroy.prof.krd@yandex.ru</a>
             <span>Краснодар, ул. Аэродромная, 37, офис 508</span>
             <span>Пн–Пт, 09:00–18:00</span>
           </div>
         </div>
         <form className="contact-form" onSubmit={submitLead} autoComplete="off">
-          {sent ? <div className="success"><b>Спасибо!</b><p>Заявка подготовлена. Для быстрой связи напишите нам в WhatsApp или позвоните.</p><a className="button gold" href="https://wa.me/79182422336">Написать в WhatsApp</a></div> : <>
+          {sent ? <div className="success"><b>Спасибо!</b><p>Заявка подготовлена. Для быстрой связи напишите нам в WhatsApp или позвоните.</p><a className="button gold" href="https://wa.me/79288473488">Написать в WhatsApp</a></div> : <>
             <label>Ваше имя<input required name="lead_name" autoComplete="off" data-lpignore="true" data-1p-ignore placeholder="Как к вам обращаться?" /></label>
             <label>Телефон<input required name="lead_phone" type="tel" autoComplete="off" data-lpignore="true" data-1p-ignore defaultValue="+7 " placeholder="+7 (___) ___-__-__" /></label>
             <label>Какой дом планируете?
@@ -383,7 +383,7 @@ export default function Home() {
 
       <footer>
         <p>Проектирование и строительство частных домов под ключ</p>
-        <div><a href="https://t.me/E_S_g_23">Telegram</a><a href="https://wa.me/79182422336">WhatsApp</a><a href="https://www.instagram.com/elite_stroy_group">Instagram</a></div>
+        <div><a href="https://t.me/E_S_g_23">Telegram</a><a href="https://wa.me/79288473488">WhatsApp</a><a href="https://www.instagram.com/elite_stroy_group">Instagram</a></div>
       </footer>
 
       <a className="floating-contact" href="#contacts" onClick={(event) => goToSection(event, "contacts")} aria-label="Перейти ко всем способам связи с ELITE STROY">
