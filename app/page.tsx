@@ -203,7 +203,7 @@ export default function Home() {
       <div className="scroll-progress" aria-hidden="true"><span ref={scrollProgressRef} /></div>
       <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="brand" href="#top" onClick={(event) => goToSection(event, "top")} aria-label="Elite Stroy — на главную">
-          <img className="brand-logo" src="/elite-stroy-logo.png" alt="ELITE STROY — реализуем ваши амбиции" />
+          <img className="brand-logo" src="/elite-stroy-site/elite-stroy-logo.png" alt="ELITE STROY — реализуем ваши амбиции" />
         </a>
         <nav className={menuOpen ? "is-open" : ""} aria-label="Основная навигация">
           <a href="#about" onClick={(event) => goToSection(event, "about")}>О компании</a>
