@@ -240,24 +240,7 @@ export default function Home() {
           <span><b>10+</b> банков-партнёров</span>
           <span><b>полный цикл</b> под ключ</span>
         </div>
-        <a className="hero-scroll" href="#about" onClick={(event) => goToSection(event, "about")} aria-label="Прокрутить к разделу о компании"><span />Листайте</a>
-      </section>
-
-      <section className="about section" id="about">
-        <div>
-          <div className="eyebrow dark">О компании</div>
-          <h2>Надёжный подрядчик<br />для важного проекта</h2>
-        </div>
-        <div className="about-copy">
-          <p>ELITE STROY — аккредитованный застройщик. Мы проектируем и строим частные дома, сопровождаем сделку и берём на себя организацию всех этапов.</p>
-        </div>
-      </section>
-
-      <section className="advantages section">
-        <article><span>01</span><h3>Подбор участка</h3><p>Проверим коммуникации, грунты, документы и юридическую чистоту.</p></article>
-        <article><span>02</span><h3>Юридическое сопровождение</h3><p>Берём на себя документы, договоры и взаимодействие с банком.</p></article>
-        <article><span>03</span><h3>Индивидуальный проект</h3><p>Создаём планировку под ваш образ жизни и особенности участка.</p></article>
-        <article><span>04</span><h3>Чёткие сроки</h3><p>Фиксируем график и используем проверенные материалы и решения.</p></article>
+        <a className="hero-scroll" href="#projects" onClick={(event) => goToSection(event, "projects")} aria-label="Прокрутить к разделу проектов"><span />Листайте</a>
       </section>
 
       <section className="projects section" id="projects">
@@ -287,6 +270,23 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="about section" id="about">
+        <div>
+          <div className="eyebrow dark">О компании</div>
+          <h2>Надёжный подрядчик<br />для важного проекта</h2>
+        </div>
+        <div className="about-copy">
+          <p>ELITE STROY — аккредитованный застройщик. Мы проектируем и строим частные дома, сопровождаем сделку и берём на себя организацию всех этапов.</p>
+        </div>
+      </section>
+
+      <section className="advantages section">
+        <article><span>01</span><h3>Подбор участка</h3><p>Проверим коммуникации, грунты, документы и юридическую чистоту.</p></article>
+        <article><span>02</span><h3>Юридическое сопровождение</h3><p>Берём на себя документы, договоры и взаимодействие с банком.</p></article>
+        <article><span>03</span><h3>Индивидуальный проект</h3><p>Создаём планировку под ваш образ жизни и особенности участка.</p></article>
+        <article><span>04</span><h3>Чёткие сроки</h3><p>Фиксируем график и используем проверенные материалы и решения.</p></article>
       </section>
 
       <section className="turnkey">
